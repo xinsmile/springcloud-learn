@@ -3,9 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.xin.example</groupId>
+	<groupId>com.xin.cloud</groupId>
 	<artifactId>spring-cloud-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<version>1.0.0</version>
 	<name>spring-cloud-parent</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -15,7 +16,6 @@
 			<artifactId>spring-boot-autoconfigure</artifactId>
 		</dependency>
 	</dependencies>
-	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -28,7 +28,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Greenwich.M1</spring-cloud.version>
+		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version><!--Greenwich.SR1-->
+		<mybatis-spring-boot-starter>2.0.1</mybatis-spring-boot-starter>
+		<spring-cloud-starter-netflix-eureka-server>1.4.6.RELEASE</spring-cloud-starter-netflix-eureka-server>
+		<spring-cloud-starter-netflix-eureka-client>2.1.1.RELEASE</spring-cloud-starter-netflix-eureka-client>
 		<!--预定义依赖版本 -->
 	</properties>
 
@@ -41,11 +44,30 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis-spring-boot-starter}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+				<version>${spring-cloud-starter-netflix-eureka-server}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
