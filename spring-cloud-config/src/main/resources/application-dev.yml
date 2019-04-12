@@ -17,7 +17,7 @@ spring:
       server:
         git:
           #这是其他项目配置文件的git仓库地址
-          uri: https://github.com/xinsmile/springcloud-learn/tree/master/cloud-config/
+          uri: https://github.com/xinsmile/cloud-config-repo.git
 #          username:
 #          passphrase:
           searchPaths: /**
